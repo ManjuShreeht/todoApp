@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .block{
+            margin: 50px ;
+            margin-left: 500px;
+        }
+         form{
+            display:flex ;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap:10px;
+            background-color: aqua;
+            width:400px;
+            height: 400px;
+            
+        }
+        form div{
+            display: flex;
+       
+            width:300px;
+           
+        }
+        input{
+            width: 200px;
+            margin-left: 50px;
+        }
+        label{
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="block">
+        <h1>Register Form</h1>
+        <form method="POST" action="/register" autocomplete="off">
+            <div>
+
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" />
+            </div>
+            <div>
+
+                <label for="email">Email:</label>
+                <input type="text" name="email" id="email" />
+            </div>
+            <div>
+
+                <label for="username">UserName:</label>
+                <input type="text" name="username" id="username" />
+            </div>
+            <div>
+
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" />
+            </div>
+            <button type="submit">Submit</button>
+
+
+        </form>
+    </div>
+    
+</body>
+</html>

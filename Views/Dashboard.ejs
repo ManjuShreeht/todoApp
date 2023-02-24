@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <form method="POST" action="/add_todo">
+            <input type="text" name="todo" id="todo" />
+            <button type="submit">Add Item</button>
+        </form>
+        <ul id="item-list">
+            <li>
+                <span> <%=todos[0].todo %> </span>
+                <div>
+                    <button class="edit_me" data-id="<%= todos[0]._id %>">edit</button>
+                    <button class="delete-me" data-id="<%=todos[0]._id %>">delete</button>
+                </div>
+            </li>
+        </ul>
+        <form action="/logout" Method="POST">
+            <button type="submit">Logout</button>
+        </form>
+        <form action="/logout_devices" Method="POST">
+            <button type="submit">Logout From All</button>
+        </form>
+    </div>
+    <script  src="/Browser.js"></script>
+    <script  src="https://unpkg.com/axios/dist/axios.min.js"> </script>
+    
+</body>
+</html>
