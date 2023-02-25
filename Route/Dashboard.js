@@ -10,17 +10,17 @@ const router=express.Router();
 
 
 router.get('/dashboard',isAuth,async(req,res)=>{
-    const  username=req.session.user.username
-   let todos=[];
-    try{
-       todos=await ItemSchema.find({username:username})
-        console.log(todos)
+//     const  username=req.session.user.username
+//    let todos=[];
+//     try{
+//        todos=await ItemSchema.find({username:username})
+//         console.log(todos)
     
-    }catch(err){
-        console.log(err)
-    }
+//     }catch(err){
+//         console.log(err)
+//     }
 
-    return res.render("Dashboard",{todos:todos})
+    return res.render("Dashboard")
 })
 
 
@@ -80,14 +80,31 @@ try {
 
  router.post("/delete", isAuth, async (req, res) => {
     const id=req.body.id;
-    try {
-        
-        const s=await ItemSchema.findOneAndDelete({ _id: ObjectId(id)})
-        console.log(s)
-        return res.send(s)
-    } catch (error) {
-        return res.send(error )
-    }
+   
+        if(!id){
+            return res.send("missing id")
+        }
+        try{
+       if(new ObjectId(id)){
+        try {
+            const s=await ItemSchema.findOne({_id:new ObjectId(id)})
+            if(s){
+               const m=await ItemSchema.findOneAndDelete({_id:new ObjectId(id)})
+               console.log(m)
+
+            }
+            console.log("hi");
+            
+        } catch (error) {
+            console.log(error)
+        }
+       }}
+       catch(err){
+        console.log(err)
+       }
+
+     
+  
 
 })
 //    //logout

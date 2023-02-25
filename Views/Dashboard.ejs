@@ -12,15 +12,7 @@
             <input type="text" name="todo" id="todo" />
             <button type="submit">Add Item</button>
         </form>
-        <ul id="item-list">
-            <li>
-                <span> <%=todos[0].todo %> </span>
-                <div>
-                    <button class="edit_me" data-id="<%= todos[0]._id %>">edit</button>
-                    <button class="delete-me" data-id="<%=todos[0]._id %>">delete</button>
-                </div>
-            </li>
-        </ul>
+      
         <form action="/logout" Method="POST">
             <button type="submit">Logout</button>
         </form>
