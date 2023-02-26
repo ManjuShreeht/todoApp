@@ -5,20 +5,88 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .block{
+            margin-top: 50px ;
+            margin-left: 500px;
+            position: relative;
+           
+        }
+         form{
+            display:flex ;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap:10px;
+           
+            width:300px;
+            height: 200px;
+            
+        }
+        form div{
+            display: flex;
+       
+            width:300px;
+           
+        }
+        input{
+            width: 200px;
+            margin-left: 50px;
+        }
+        label{
+            width: 100px;
+        }
+        a{
+            text-align: center;
+            margin-left: 200px;
+           
+            position: absolute;
+            top:212px;
+        }
+    </style>
 </head>
 <body>
-    <div>
-        <form method="POST" action="/add_todo">
-            <input type="text" name="todo" id="todo" />
-            <button type="submit">Add Item</button>
-        </form>
-      
-        <form action="/logout" Method="POST">
+    <div class="block">
+        <div>
+           <h4> Name:<%= todos[0].name %>  </h4> 
+          <h4> Email :<%= todos[0].email %></h4>
+          <h4> Mobile: <%= todos[0].mobile%></h4>
+         
+         <h4>Username:<%= todos[0]username%>    </h4>
+        </div>
+        
+       
+        <div>
+            
+        </div>
+        <form action="logout" method="POST">
             <button type="submit">Logout</button>
         </form>
-        <form action="/logout_devices" Method="POST">
-            <button type="submit">Logout From All</button>
+       
+          
+           
+            
+           <form action="/add_Profile" method="POST">
+                        <div>
+
+                <label for="state">state:</label>
+                <input type="text" name="state" id="state" />
+            </div>
+            <div>
+
+                <label for="country">country</label>
+                <input type="text" name="country" id="country" />
+            </div>
+            <div>
+
+                <label for="college">College</label>
+                <input type="text" name="college" id="college" />
+            </div>
+          
+            <button type="submit">Save</button>
+           
         </form>
+       
     </div>
     <script  src="/Browser.js"></script>
     <script  src="https://unpkg.com/axios/dist/axios.min.js"> </script>

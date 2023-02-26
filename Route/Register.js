@@ -12,9 +12,9 @@ router.get('/register',(req,res)=>{
     return res.render("Register")
 })
 router.post('/register', async(req,res)=>{
-    const { name, email, password, username } = req.body;
+    const { name, email,mobile, password, username } = req.body;
     try{
-    await clearVali({name,email,password,username})
+    await clearVali({name,email,mobile,password,username})
     let userExit;
     try {
         userExit=await RegisterSchema.findOne({email})
@@ -35,11 +35,12 @@ router.post('/register', async(req,res)=>{
     const userdata=new RegisterSchema({
         name:req.body.name,
         email:req.body.email,
+        mobile:req.body.mobile,
         username:req.body.username,
         password:hash
     })
     const db=await userdata.save()
-    return res.send(db)
+    return res.redirect("Login")
 
 }
 catch(error){

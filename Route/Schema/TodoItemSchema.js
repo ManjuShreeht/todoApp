@@ -2,11 +2,19 @@ const express=require("express");
 const mongoose=require("mongoose")
 
 const ItemSchema=new mongoose.Schema({
-    todo:{
+    state:{
         type:String,
         require:true,
     },
-    username:{
+    country:{
+        type:String,
+        require:true
+    },
+    college:{
+        type:String,
+        required:true
+    },
+        username:{
         type:String,
         require:true
     }

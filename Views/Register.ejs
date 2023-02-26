@@ -7,8 +7,10 @@
     <title>Document</title>
     <style>
         .block{
-            margin: 50px ;
+            margin-top: 50px ;
             margin-left: 500px;
+            position: relative;
+           
         }
          form{
             display:flex ;
@@ -16,9 +18,9 @@
             align-items: center;
             justify-content: center;
             gap:10px;
-            background-color: aqua;
-            width:400px;
-            height: 400px;
+           
+            width:300px;
+            height: 200px;
             
         }
         form div{
@@ -33,6 +35,13 @@
         }
         label{
             width: 100px;
+        }
+        a{
+            text-align: center;
+            margin-left: 200px;
+           
+            position: absolute;
+            top:212px;
         }
     </style>
 </head>
@@ -52,6 +61,11 @@
             </div>
             <div>
 
+                <label for="mobile">Mobile:</label>
+                <input type="text" name="mobile" id="mobile" />
+            </div>
+            <div>
+
                 <label for="username">UserName:</label>
                 <input type="text" name="username" id="username" />
             </div>
@@ -60,10 +74,11 @@
                 <label for="password">Password:</label>
                 <input type="password" name="password" id="password" />
             </div>
-            <button type="submit">Submit</button>
+            <button type="submit">Registration</button>
 
 
         </form>
+        <a href="/login">Login</a>
     </div>
     
 </body>

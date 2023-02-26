@@ -27,7 +27,7 @@ router.post('/login',async(req,res)=>{
         if(!userdata){
             return res.send("invalid username")
         }
-        console.log(userdata)
+       
 
       const pass=  bcrypt.compareSync(password, userdata.password); // true
       if(!pass){

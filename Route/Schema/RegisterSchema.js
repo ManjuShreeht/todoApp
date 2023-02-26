@@ -10,9 +10,14 @@ const RegisterSchema=new mongoose.Schema({
         required:true,
         unique:true
     },
+    mobile:{
+        type:String,
+        required:true
+    },
     username:{
         type:String,
         requied:true,
+        unique:true
     },
     password:{
         type:String,
