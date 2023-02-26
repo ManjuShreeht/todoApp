@@ -2,6 +2,22 @@ const express=require("express");
 const mongoose=require("mongoose")
 
 const ItemSchema=new mongoose.Schema({
+    name:{
+        type:String,
+        
+    },
+    mobile:{
+        type:String,
+        
+    },
+    email:{
+        type:String,
+        
+    },
+    password:{
+        type:String
+    },
+
     state:{
         type:String,
         require:true,

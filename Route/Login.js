@@ -16,7 +16,7 @@ router.post('/login',async(req,res)=>{
         return res.send("missing credentials")
     }
     let userdata;
-    console.log(userdata)
+    // console.log(userdata)
     try{
         if(validator.isEmail(loginId)){
 
@@ -33,7 +33,7 @@ router.post('/login',async(req,res)=>{
       if(!pass){
         return res.send("invalid")
       }
-      console.log(userdata)
+      // console.log(userdata)
          
       
       //use session based athentication
@@ -45,6 +45,8 @@ router.post('/login',async(req,res)=>{
       req.session.user=({
         username:userdata.username,
         email:userdata.email,
+        mobile:userdata.mobile,
+        name:userdata.name,
         userId:userdata._id,
       })
       return res.redirect('/dashboard');

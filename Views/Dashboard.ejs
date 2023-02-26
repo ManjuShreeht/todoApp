@@ -48,44 +48,22 @@
 <body>
     <div class="block">
         <div>
-           <h4> Name:<%= todos[0].name %>  </h4> 
-          <h4> Email :<%= todos[0].email %></h4>
-          <h4> Mobile: <%= todos[0].mobile%></h4>
-         
-         <h4>Username:<%= todos[0]username%>    </h4>
-        </div>
-        
-       
-        <div>
-            
-        </div>
-        <form action="logout" method="POST">
+            <h4> Email :<%= todos[0].name %></h4>
+            <h4> Email :<%= todos[0].email %></h4>
+            <h4> Mobile: <%= todos[0].mobile %></h4>
+              <h4>Username:<%= todos[0].username %>    </h4>
+          </div>
+          
+       <a href="/add_Profile">complete Profile</a>
+      
+        <form action="/logout" method="POST">
             <button type="submit">Logout</button>
         </form>
        
           
            
             
-           <form action="/add_Profile" method="POST">
-                        <div>
-
-                <label for="state">state:</label>
-                <input type="text" name="state" id="state" />
-            </div>
-            <div>
-
-                <label for="country">country</label>
-                <input type="text" name="country" id="country" />
-            </div>
-            <div>
-
-                <label for="college">College</label>
-                <input type="text" name="college" id="college" />
-            </div>
           
-            <button type="submit">Save</button>
-           
-        </form>
        
     </div>
     <script  src="/Browser.js"></script>

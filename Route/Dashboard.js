@@ -12,10 +12,17 @@ const router=express.Router();
 
 router.get("/dashboard", isAuth, async (req, res) => {
     const username = req.session.user.username;
-    let todos,todos1;
+ 
+    let todos;
+   
     try {
-      //todos = await ItemSchema.find({ username: username });
-    todos1=await Register.find({username:username})
+        
+     
+        todos = await RegisterSchema.find({ username: username });
+    //   if(todos[0].name===""){
+
+    //       todos=await ReactSchema.findOne({username:username})
+    //   }
        console.log(todos);
   
     //   return res.send({
@@ -37,50 +44,95 @@ router.get("/dashboard", isAuth, async (req, res) => {
 
 //add item
 
+router.get("/fullProfile",isAuth,async(req,res)=>{
+    
+    const username = req.session.user.username;
+ 
+    let todos1;
+   
+    try {
+        
+     console.log("break to check")
+        todos1= await ItemSchema.findOne({ username: username });
+        console.log(todos1);
+        // return res.send(todos1.username)
+  
+   
+    } catch (error) {
+        console.log(error)
+      return res.send({
+        status: 400,
+        message: "Database error",
+        error: error,
+      });
+    }
+  console.log("end")
+     return res.render("FullPofile", { todos1: todos1});
+  });
 
-
+  router.get("/add_Profile",(req,res)=>{
+    res.render("Profile")
+  })
 router.post("/add_Profile",isAuth,async(req,res)=>{
     const {state,country,college,username}=req.body
+    const s=await RegisterSchema.findOne({_id:req.session.user.userId})
     const usertodo=new ItemSchema({
       
         state:req.body.state,
         country:req.body.country,
         college:req.body.college,
         username:req.session.user.username,
-        email:req.session.user.email
+        email:req.session.user.email,
+        name:req.session.user.name,
+        mobile:req.session.user.mobile
+
+
     })
-    // console.log(usertodo)
+
    
     try {
         const text=await usertodo.save();
-        console.log(text)
-        return res.send(text)
+        // console.log(text)
+    //   console.log(text)
         
+      res.redirect("/fullProfile")
     } catch (error) {
         return res.send(error)
     }
    
 
 })
+router.get("/edit",(req,res)=>{
+   return res.render("Edit")
+})
 router.post('/edit',isAuth,async(req,res)=>{
-    const id=req.body.id
-    const newdata=req.body.newdata
-    if(!id || !newdata){
-        return res.send("missing todo")
+    const userId=req.session.user.userId
+    // console.log(userId)
+    const username=req.session.user.username
+    const name=req.body.name
+    const mobile=req.body.mobile
+    const state=req.body.state
+    const country=req.body.country
+    const college=req.body.college
+   
+    if(!userId  || !name || !mobile || ! state || !country){
+        return res.send("missing cedentials")
     }
     try{
-const tododb=await ItemSchema.findOne({_id:id})
+const tododb=await ItemSchema.findOne({username:username})
+
 if(!tododb){
     return res.send("not found")
 }
-console.log(tododb)
+
 if(tododb.username !== req.session.user.username){
     return res.send("authentication failed")
 }
 try {
     
-    const tododbupdate=await ItemSchema.findOneAndUpdate({_id:id},{todo:newdata})
-       return res.send(tododbupdate)     
+    const tododbupdate=await ItemSchema.findOneAndUpdate({username:username},{name:name},{mobile:mobile},{state:state},{country:country},{college:college})
+    console.log(tododbupdate)   
+    return res.send(tododbupdate)     
 } catch (error) {
     return res.send(error)
 }
