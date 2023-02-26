@@ -7,11 +7,11 @@ var bcrypt = require('bcryptjs');
 
 const router=express.Router();
 
-router.get('/register',(req,res)=>{
+router.get('/',(req,res)=>{
     console.log(req.session)
     return res.render("Register")
 })
-router.post('/register', async(req,res)=>{
+router.post('/', async(req,res)=>{
     const { name, email,mobile, password, username } = req.body;
     try{
     await clearVali({name,email,mobile,password,username})
